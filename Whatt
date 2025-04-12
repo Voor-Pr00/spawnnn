@@ -69,7 +69,7 @@ achievementGiver({
     Title = "Escape from Wh1t3",
     Desc = "HOW",
     Reason = "Encounter Wh1t3",
-    Image = "rbxassetid://104903899351090"
+    Image = "rbxassetid://136014777474140"
 })
 end
  
@@ -112,7 +112,7 @@ local function DeathHint(hints, type: string)
 end
 
 DeathHint({
-    "You Died by Nightmare Rush!!",
+    "You Died by white!!",
     "Hide and survival",
     "Let try again!"
 }, "Blue") -- "Blue" or "Yellow"
@@ -122,10 +122,10 @@ local achievementGiver = loadstring(game:HttpGet("https://raw.githubusercontent.
 
 ---====== Display achievement ======---
 achievementGiver({
-    Title = "Escape from Nightmare",
-    Desc = "Don't Hide...",
-    Reason = "Encounter Nightmare Rush",
-    Image = "rbxassetid://104903899351090"
+    Title = "Escape from Wh1t3",
+    Desc = "HOW",
+    Reason = "Encounter Wh1t3",
+    Image = "rbxassetid://136014777474140"
 })
 end
 ------------------------
