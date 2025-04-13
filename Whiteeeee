@@ -82,8 +82,8 @@ local entity = spawner.Create({
 		Values = {15.5, 20, 0.1, 1} -- Magnitude, Roughness, FadeIn, FadeOut
 	},
 	Movement = {
-		Speed = 620,
-		Delay = 5,
+		Speed = 615,
+		Delay = 6,
 		Reversed = false
 	},
 	Rebounding = {
@@ -91,7 +91,7 @@ local entity = spawner.Create({
 		Type = "Blitz",
 		Min = 18,
 		Max = 20,
-		Delay = 0.01
+		Delay = 0.02
 	},
 	Damage = {
 		Enabled = true,
@@ -100,7 +100,7 @@ local entity = spawner.Create({
 	},
 	Crucifixion = {
 		Enabled = true,
-		Range = 40,
+		Range = 60,
 		Resist = false,
 		Break = true
 	},
@@ -126,7 +126,7 @@ local sound = Instance.new("Sound")
 	sound.SoundId = "rbxassetid://"..131489490
 	sound.Looped = false
 	sound.Parent = workspace.WH1T3
-	sound.Volume = 3
+	sound.Volume = 4
 	sound:Play()
 end)
 
@@ -278,7 +278,7 @@ entity:SetCallback("OnDamagePlayer", function(newHealth)
 		print("Entity has killed the player")
 	else
 		print("Entity has damaged the player")
-		game.Players.LocalPlayer.Character:FindFirstChildWhichIsA("Humanoid"):TakeDamage(50)
+		game.Players.LocalPlayer.Character:FindFirstChildWhichIsA("Humanoid"):TakeDamage(60)
 		game:GetService("ReplicatedStorage").GameStats["Player_".. game.Players.LocalPlayer.Name].Total.DeathCause.Value = "Wh1t3"
 		local Gglitchy = game:GetService("Players").LocalPlayer:WaitForChild("PlayerGui"):FindFirstChild("Glitchy")
     local Gglitch1 = Gglitchy["Glitch Screen"].Glitch1
@@ -307,7 +307,7 @@ entity:SetCallback("OnDamagePlayer", function(newHealth)
 			Debuffs.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
 			WH1T3.Name = "WH1T3"
 			WH1T3.Parent = Debuffs
-			WH1T3.BackgroundColor3 = Color3.fromRGB(90, 43, 43)
+			WH1T3.BackgroundColor3 = Color3.fromRGB(9, 9, 9)
 			WH1T3.BackgroundTransparency = 0.500
 			WH1T3.BorderColor3 = Color3.fromRGB(0, 0, 0)
 			WH1T3.BorderSizePixel = 0
