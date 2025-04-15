@@ -268,7 +268,7 @@ achievementGiver({
     Title = "Fought A Beast And Survived.",
     Desc = "How?",
     Reason = "Survive WH1T3.",
-    Image = "GitPNG("https://github.com/Hastloxhsx/Images/blob/main/Wh1t3.png?raw=true", "whitebalge")"
+    Image = ""
 })
 end
 end)
