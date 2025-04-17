@@ -268,7 +268,7 @@ achievementGiver({
     Title = "Fought A Beast And Survived.",
     Desc = "How?",
     Reason = "Survive WH1T3.",
-    Image = "rbxassetid://78078304976650"
+    Image = "rbxassetid://114256281426461"
 })
 end
 end)
