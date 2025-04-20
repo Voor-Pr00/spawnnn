@@ -346,8 +346,6 @@ entity:SetCallback("OnDamagePlayer", function(newHealth)
 	end
 end)
 
-entity:SetCallback("CrucifixionOverwrite", function()
-    print("Custom crucifixion callback")
 ---====== Run entity ======---
 
 entity:Run()
