@@ -348,25 +348,11 @@ end)
 
 entity:SetCallback("CrucifixionOverwrite", function()
     print("Custom crucifixion callback")
-game.Workspace.Wh1t3:Destroy()
----====== Load achievement giver ======---
-local achievementGiver = loadstring(game:HttpGet("https://raw.githubusercontent.com/RegularVynixu/Utilities/main/Doors/Custom%20Achievements/Source.lua"))()
-
----====== Display achievement ======---
-achievementGiver({
-    Title = "You're Stupid",
-    Desc = "Crash! Crash! Crash!",
-    Reason = "Crucifix On Wh1t3",
-    Image = "rbxassetid://137673471255239"
-})
-
-end)
-
 ---====== Run entity ======---
 
 entity:Run()
-
 end
-end 
-end)()
 
+if game.Players.LocalPlayer.Character.Humanoid.Health >= 0 then
+white()
+end
