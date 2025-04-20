@@ -360,11 +360,13 @@ achievementGiver({
     Image = "rbxassetid://137673471255239"
 })
 
+end)
+
 ---====== Run entity ======---
 
 entity:Run()
-end
 
-if game.Players.LocalPlayer.Character.Humanoid.Health >= 0 then
-white()
 end
+end 
+end)()
+
