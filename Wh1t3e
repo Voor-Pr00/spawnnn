@@ -91,7 +91,7 @@ local entity = spawner.Create({
 		Type = "Blitz",
 		Min = 18,
 		Max = 18,
-		Delay = 0.03
+		Delay = 0.02
 	},
 	Damage = {
 		Enabled = true,
@@ -100,7 +100,7 @@ local entity = spawner.Create({
 	},
 	Crucifixion = {
 		Enabled = true,
-		Range = 60,
+		Range = 75,
 		Resist = false,
 		Break = true
 	},
