@@ -78,7 +78,7 @@ local entity = spawner.Create({
 	},
 	CameraShake = {
 		Enabled = true,
-		Range = 100,
+		Range = 90,
 		Values = {15.5, 20, 0.1, 1} -- Magnitude, Roughness, FadeIn, FadeOut
 	},
 	Movement = {
@@ -95,12 +95,12 @@ local entity = spawner.Create({
 	},
 	Damage = {
 		Enabled = true,
-		Range = 100,
+		Range = 87,
 		Amount = 0.01
 	},
 	Crucifixion = {
 		Enabled = true,
-		Range = 75,
+		Range = 67,
 		Resist = false,
 		Break = true
 	},
@@ -126,7 +126,7 @@ local sound = Instance.new("Sound")
 	sound.SoundId = "rbxassetid://"..131489490
 	sound.Looped = false
 	sound.Parent = workspace.WH1T3
-	sound.Volume = 4
+	sound.Volume = 5
 	sound:Play()
 end)
 
@@ -166,7 +166,7 @@ entity:SetCallback("OnLookAt", function(lineOfSight)
     wait()
     clock = tick()
 		if game.Players.LocalPlayer.Character.Humanoid.Health > 0 then
-        game.Players.LocalPlayer.Character.Humanoid.Health -= 2.5
+        game.Players.LocalPlayer.Character.Humanoid.Health -= 0.5
         if game:GetService("Players").LocalPlayer:WaitForChild("PlayerGui"):FindFirstChild("Glitchy") then
     local Gglitchy = game:GetService("Players").LocalPlayer:WaitForChild("PlayerGui"):FindFirstChild("Glitchy")
     local Gglitch1 = Gglitchy["Glitch Screen"].Glitch1
@@ -259,7 +259,7 @@ Test = 1
     end
     return (getcustomasset or getsynasset)(ImageName .. ".png")
 end
-if game.Players.LocalPlayer.Character.Humanoid.Health >= 15 then
+if game.Players.LocalPlayer.Character.Humanoid.Health >= 20 then
 ---====== Load achievement giver ======---
 local achievementGiver = loadstring(game:HttpGet("https://raw.githubusercontent.com/RegularVynixu/Utilities/main/Doors/Custom%20Achievements/Source.lua"))()
 
