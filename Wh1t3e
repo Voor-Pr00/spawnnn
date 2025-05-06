@@ -82,7 +82,7 @@ local entity = spawner.Create({
 		Values = {15.5, 20, 0.1, 1} -- Magnitude, Roughness, FadeIn, FadeOut
 	},
 	Movement = {
-		Speed = 560,
+		Speed = 589,
 		Delay = 9.1,
 		Reversed = false
 	},
@@ -90,8 +90,8 @@ local entity = spawner.Create({
 		Enabled = true,
 		Type = "Blitz",
 		Min = 16,
-		Max = 17,
-		Delay = 0.98
+		Max = 16,
+		Delay = 1.2
 	},
 	Damage = {
 		Enabled = true,
