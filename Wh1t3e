@@ -91,7 +91,7 @@ local entity = spawner.Create({
 		Type = "Blitz",
 		Min = 18,
 		Max = 18,
-		Delay = 0.02
+		Delay = 0.05
 	},
 	Damage = {
 		Enabled = true,
