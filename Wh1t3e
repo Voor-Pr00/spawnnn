@@ -62,7 +62,7 @@ end
 local entity = spawner.Create({
 	Entity = {
 		Name = "WH1T3",
-		Asset = "rbxassetid://16735149732",
+		Asset = "rbxassetid://94335061097502",
 		HeightOffset = 1
 	},
 	Lights = {
@@ -82,7 +82,7 @@ local entity = spawner.Create({
 		Values = {15.5, 20, 0.1, 1} -- Magnitude, Roughness, FadeIn, FadeOut
 	},
 	Movement = {
-		Speed = 589,
+		Speed = 590,
 		Delay = 9.1,
 		Reversed = false
 	},
@@ -95,7 +95,7 @@ local entity = spawner.Create({
 	},
 	Damage = {
 		Enabled = true,
-		Range = 90,
+		Range = 83,
 		Amount = 0.01
 	},
 	Crucifixion = {
