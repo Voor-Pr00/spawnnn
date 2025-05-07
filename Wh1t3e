@@ -89,8 +89,8 @@ local entity = spawner.Create({
 	Rebounding = {
 		Enabled = true,
 		Type = "Blitz",
-		Min = 15,
-		Max = 16,
+		Min = 14,
+		Max = 15,
 		Delay = 0.2
 	},
 	Damage = {
