@@ -163,7 +163,7 @@ achievementGiver({
     Title = "Who kills who now",
     Desc = "You don’t want crash game today?",
     Reason = "Use Crucifix on Wh1t3",
-    Image = "rbxassetid://105657469801965"
+    Image = "rbxassetid://100801611123508"
 })
 end
 end)
@@ -279,7 +279,7 @@ achievementGiver({
     Title = "Fought A Beast And Survived.",
     Desc = "How?",
     Reason = "Survive WH1T3.",
-    Image = "rbxassetid://114256281426461"
+    Image = "rbxassetid://100801611123508"
 })
 end
 end)
