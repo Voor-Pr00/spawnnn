@@ -160,6 +160,18 @@ entity:SetCallback("OnEnterRoom", function(room, firstTime)
         game.Lighting.Ambient = Color3.fromRGB(67,51,56)
 game:GetService("TweenService"):Create(game.Lighting, TweenInfo.new(40), {Ambient = Color3.fromRGB(67, 51, 56)}):Play()
     end
+
+if game.Workspace:WaitForChild("RepentanceNEW", 750) then
+local achievementGiver = loadstring(game:HttpGet("https://raw.githubusercontent.com/RegularVynixu/Utilities/main/Doors/Custom%20Achievements/Source.lua"))()
+
+---====== Display achievement ======---
+achievementGiver({
+    Title = "Who kills who now",
+    Desc = "You don’t want crash game today?",
+    Reason = "Use Crucifix on Wh1t3",
+    Image = "rbxassetid://105657469801965"
+})
+end
 end)
 
 entity:SetCallback("OnLookAt", function(lineOfSight)
