@@ -82,16 +82,16 @@ local entity = spawner.Create({
 		Values = {15.5, 20, 0.1, 1} -- Magnitude, Roughness, FadeIn, FadeOut
 	},
 	Movement = {
-		Speed = 590,
-		Delay = 9.1,
+		Speed = 410,
+		Delay = 9,
 		Reversed = false
 	},
 	Rebounding = {
 		Enabled = true,
 		Type = "Blitz",
-		Min = 15,
-		Max = 16,
-		Delay = 0.2
+		Min = 7,
+		Max = 8,
+		Delay = 1.1
 	},
 	Damage = {
 		Enabled = true,
@@ -100,7 +100,7 @@ local entity = spawner.Create({
 	},
 	Crucifixion = {
 		Enabled = true,
-		Range = 67,
+		Range = 70,
 		Resist = false,
 		Break = true
 	},
