@@ -78,11 +78,11 @@ local entity = spawner.Create({
 	},
 	CameraShake = {
 		Enabled = true,
-		Range = 90,
+		Range = 95,
 		Values = {15.5, 20, 0.1, 1} -- Magnitude, Roughness, FadeIn, FadeOut
 	},
 	Movement = {
-		Speed = 260,
+		Speed = 255,
 		Delay = 9,
 		Reversed = false
 	},
@@ -128,19 +128,6 @@ local sound = Instance.new("Sound")
 	sound.Parent = workspace.WH1T3
 	sound.Volume = 5
 	sound:Play()
-local redtweeninfo = TweenInfo.new(3)
-local redinfo = {Color = Color3.fromRGB(255, 0, 0)}
-
-----------
-
-for i,v in pairs(workspace.CurrentRooms:GetDescendants()) do
-			if v:IsA("Light") then
-					game.TweenService:Create(v,redtweeninfo,redinfo):Play()
-					if v.Parent.Name == "LightFixture" then
-						    game.TweenService:Create(v.Parent,redtweeninfo,redinfo):Play()
-					end
-		  end
-end
 end)
 
 entity:SetCallback("OnStartMoving", function()
@@ -148,7 +135,7 @@ entity:SetCallback("OnStartMoving", function()
 local tween = game:GetService("TweenService")
 tween:Create(game.Lighting.MainColorCorrection, TweenInfo.new(2.5), {Contrast = 0}):Play()
 local TweenService = game:GetService("TweenService")
-local TW = TweenService:Create(game.Lighting.MainColorCorrection, TweenInfo.new(40),{TintColor = Color3.fromRGB(255, 255, 255)})
+local TW = TweenService:Create(game.Lighting.MainColorCorrection, TweenInfo.new(10),{TintColor = Color3.fromRGB(255, 255, 255)})
 TW:Play()
 end)
 
@@ -173,8 +160,8 @@ end
 function CustomGitSound(soundlink, vol, filename)
     local sound = Instance.new("Sound")
     sound.SoundId = GitAud(soundlink, filename)
-    sound.Parent = workspace
-    sound.Volume = 4
+    sound.Parent = workspace.RepentanceNEW
+    sound.Volume = 3
    sound:Play()
 end
 
