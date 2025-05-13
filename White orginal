@@ -89,8 +89,8 @@ local entity = spawner.Create({
 	Rebounding = {
 		Enabled = true,
 		Type = "Blitz",
-		Min = 5,
-		Max = 5,
+		Min = 4,
+		Max = 4,
 		Delay = 1.8
 	},
 	Damage = {
@@ -100,7 +100,7 @@ local entity = spawner.Create({
 	},
 	Crucifixion = {
 		Enabled = true,
-		Range = 65,
+		Range = 80,
 		Resist = false,
 		Break = true
 	},
@@ -177,6 +177,9 @@ end)
 
 entity:SetCallback("OnDespawning", function()
     print("Entity is despawning")
+local TweenService = game:GetService("TweenService")
+local TW = TweenService:Create(game.Lighting.MainColorCorrection, TweenInfo.new(10),{TintColor = Color3.fromRGB(255, 255, 255)})
+TW:Play()
     local Gglitchy = game:GetService("Players").LocalPlayer:WaitForChild("PlayerGui"):FindFirstChild("Glitchy")
     local Gglitch1 = Gglitchy["Glitch Screen"].Glitch1
     local Gglitch2 = Gglitchy["Glitch Screen"].Glitch2
