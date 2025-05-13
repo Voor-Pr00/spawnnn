@@ -155,35 +155,6 @@ entity:SetCallback("OnEnterRoom", function(room, firstTime)
         game.Lighting.Ambient = Color3.fromRGB(255,0,0)
 game:GetService("TweenService"):Create(game.Lighting, TweenInfo.new(1.5), {Ambient = Color3.fromRGB(67, 51, 56)}):Play()
     end
-if game.Workspace:WaitForChild("RepentanceNEW", 750) then
-function GitAud(soundgit,filename)
-    SoundName=tostring(SoundName)
-    local url=soundgit
-    local FileName = filename
-    writefile(FileName..".mp3", game:HttpGet(url))
-    return (getcustomasset or getsynasset)(FileName..".mp3")
-end
-
-function CustomGitSound(soundlink, vol, filename)
-    local sound = Instance.new("Sound")
-    sound.SoundId = GitAud(soundlink, filename)
-    sound.Parent = workspace
-    sound.Volume = 4
-   sound:Play()
-end
-
-CustomGitSound("https://raw.githubusercontent.com/Voorproo/Eye/refs/heads/main/DOORS-UNUSED-SOUNDTRACK-Stress%20(mp3cut.net).mp3", 1, "crucifix")
-wait(5)
-local achievementGiver = loadstring(game:HttpGet("https://raw.githubusercontent.com/RegularVynixu/Utilities/main/Doors/Custom%20Achievements/Source.lua"))()
-
----====== Display achievement ======---
-achievementGiver({
-    Title = "Who kills who now",
-    Desc = "You don’t want crash game today?",
-    Reason = "Use Crucifix on Wh1t3",
-    Image = "rbxassetid://100801611123508"
-})
-end
 end)
 
 entity:SetCallback("OnLookAt", function(lineOfSight)
