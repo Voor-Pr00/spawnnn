@@ -153,7 +153,7 @@ entity:SetCallback("OnLookAt", function(lineOfSight)
 		print("Player is looking at entity")
 local FPS = 3
     local clock = tick()
-        while clock + 0.5 / FPS > tick() do end
+        while clock + 0.2 / FPS > tick() do end
     wait()
     clock = tick()
 end)
@@ -227,7 +227,7 @@ local achievementGiver = loadstring(game:HttpGet("https://raw.githubusercontent.
 ---====== Display achievement ======---
 achievementGiver({
     Title = "Fought A Beast And Survived.",
-    Desc = "How?",
+    Desc = "HOW",
     Reason = "Survive WH1T3.",
     Image = "rbxassetid://105657469801965"
 })
