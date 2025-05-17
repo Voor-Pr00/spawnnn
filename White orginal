@@ -95,7 +95,7 @@ local entity = spawner.Create({
 	},
 	Damage = {
 		Enabled = true,
-		Range = 69,
+		Range = 73,
 		Amount = 0.01
 	},
 	Crucifixion = {
@@ -215,7 +215,7 @@ Test = 1
     end
     return (getcustomasset or getsynasset)(ImageName .. ".png")
 end
-if game.Players.LocalPlayer.Character.Humanoid.Health >= 20 then
+if game.Players.LocalPlayer.Character.Humanoid.Health >= 1 then
 ---====== Load achievement giver ======---
 local achievementGiver = loadstring(game:HttpGet("https://raw.githubusercontent.com/RegularVynixu/Utilities/main/Doors/Custom%20Achievements/Source.lua"))()
 
