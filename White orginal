@@ -151,6 +151,11 @@ end)
 
 entity:SetCallback("OnLookAt", function(lineOfSight)
 		print("Player is looking at entity")
+local FPS = 3
+    local clock = tick()
+        while clock + 0.5 / FPS > tick() do end
+    wait()
+    clock = tick()
 end)
 
 entity:SetCallback("OnRebounding", function(startOfRebound)
