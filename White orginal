@@ -63,7 +63,7 @@ local entity = spawner.Create({
 	Entity = {
 		Name = "WH1T3",
 		Asset = "rbxassetid://116291604845908",
-		HeightOffset = 0.5
+		HeightOffset = 0.1
 	},
 	Lights = {
 		Flicker = {
@@ -78,7 +78,7 @@ local entity = spawner.Create({
 	},
 	CameraShake = {
 		Enabled = true,
-		Range = 95,
+		Range = 80,
 		Values = {15.5, 20, 0.1, 1} -- Magnitude, Roughness, FadeIn, FadeOut
 	},
 	Movement = {
@@ -91,7 +91,7 @@ local entity = spawner.Create({
 		Type = "Ambush",
 		Min = 2,
 		Max = 2,
-		Delay = 1.6
+		Delay = 1.5
 	},
 	Damage = {
 		Enabled = true,
@@ -144,18 +144,11 @@ entity:SetCallback("OnEnterRoom", function(room, firstTime)
         print("Entity has entered room: ".. room.Name.. " for the first time")
     else
         print("Entity has entered room: ".. room.Name.. " again")
-        game.Lighting.Ambient = Color3.fromRGB(67,51,56)
-game:GetService("TweenService"):Create(game.Lighting, TweenInfo.new(40), {Ambient = Color3.fromRGB(67, 51, 56)}):Play()
     end
 end)
 
 entity:SetCallback("OnLookAt", function(lineOfSight)
 		print("Player is looking at entity")
-local FPS = 3
-    local clock = tick()
-        while clock + 1.1 / FPS > tick() do end
-    wait()
-    clock = tick()
 end)
 
 entity:SetCallback("OnRebounding", function(startOfRebound)
