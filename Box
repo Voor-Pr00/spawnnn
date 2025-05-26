@@ -19,7 +19,7 @@ lighty.Color = Color3.fromRGB(255,186,26)
 lighty.Range = 13
  
 local lightp = Instance.new("PointLight")
-lightp.Brightness = 20
+lightp.Brightness = 10
 lightp.Parent = z
 lightp.Enabled = true
 lightp.Color = Color3.fromRGB(255,255,255)
@@ -53,7 +53,7 @@ for _, v in next, game.Workspace.CurrentRooms[lastroom].Assets:GetDescendants() 
 
             if randomy == 1 then
 
-        local positio = v.Main.Position + Vector3.new(0, 4, 0)
+        local positio = v.Main.Position + Vector3.new(0, 2.5, 0)
 
         spawncruxy(positio)
 
