@@ -1,0 +1,73 @@
+local plr = game.Players.LocalPlayer
+local chr = plr.Character
+local r = math.random(1, 15)
+
+coroutine.wrap(function()
+game.ReplicatedStorage.GameData.LatestRoom.Changed:Connect(function()
+function spawncruxy(posy)
+local s = game:GetObjects("rbxassetid://127731172649135")[1]
+local z = s.WoodenCrate.Base:Clone()
+s:Destroy()
+z.Parent = game.Workspace
+z.Position = posy
+
+local lighty = Instance.new("PointLight")
+lighty.Brightness = 5
+lighty.Parent = z
+lighty.Enabled = true
+lighty.Color = Color3.fromRGB(255,186,26)
+lighty.Range = 13
+ 
+local lightp = Instance.new("PointLight")
+lightp.Brightness = 20
+lightp.Parent = z
+lightp.Enabled = true
+lightp.Color = Color3.fromRGB(255,255,255)
+lightp.Range = 6
+
+local prompty = Instance.new("ProximityPrompt")
+prompty.Name = "prompty"
+prompty.MaxActivationDistance = 10
+prompty.ObjectText = "Custom"
+prompty.RequiresLineOfSight = true
+prompty.Parent = z
+prompty.Style = "Custom"
+prompty.HoldDuration = 1.5
+prompty.Triggered:Connect(function()
+z:Destroy()
+if r == 1 then
+loadstring(game:HttpGet('https://raw.githubusercontent.com/PenguinManiack/Crucifix/main/Crucifix.lua'))()
+loadstring(game:HttpGet('https://raw.githubusercontent.com/PenguinManiack/Crucifix/main/Crucifix.lua'))()
+elseif r == 2 then
+loadstring(game:HttpGet('https://pastefy.app/9WFow3Dj/raw'))()
+end
+end)
+end
+
+local lastroom = game:GetService("ReplicatedStorage").GameData.LatestRoom.Value
+
+for _, v in next, game.Workspace.CurrentRooms[lastroom].Assets:GetDescendants() do
+
+    if v.Name == "Table" then
+
+        local randomy = math.random(1, 100)
+
+            if randomy == 1 then
+
+        local positio = v.Main.Position + Vector3.new(0, 4, 0)
+
+        spawncruxy(positio)
+
+            end
+
+    end
+
+end
+
+--
+
+end)
+
+end)()
+
+--
