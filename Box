@@ -37,7 +37,6 @@ prompty.Triggered:Connect(function()
 z:Destroy()
 if r == 1 then
 loadstring(game:HttpGet('https://raw.githubusercontent.com/PenguinManiack/Crucifix/main/Crucifix.lua'))()
-loadstring(game:HttpGet('https://raw.githubusercontent.com/PenguinManiack/Crucifix/main/Crucifix.lua'))()
 elseif r == 2 then
 loadstring(game:HttpGet("https://raw.githubusercontent.com/Voorproo/Eye/refs/heads/main/whyssmiley"))()
 end
@@ -50,7 +49,7 @@ for _, v in next, game.Workspace.CurrentRooms[lastroom].Assets:GetDescendants() 
 
     if v.Name == "Table" then
 
-        local randomy = math.random(1, 100)
+        local randomy = math.random(1, 115)
 
             if randomy == 1 then
 
