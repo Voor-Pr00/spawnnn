@@ -39,7 +39,7 @@ if r == 1 then
 loadstring(game:HttpGet('https://raw.githubusercontent.com/PenguinManiack/Crucifix/main/Crucifix.lua'))()
 loadstring(game:HttpGet('https://raw.githubusercontent.com/PenguinManiack/Crucifix/main/Crucifix.lua'))()
 elseif r == 2 then
-loadstring(game:HttpGet('https://pastefy.app/9WFow3Dj/raw'))()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/Voorproo/Eye/refs/heads/main/whyssmiley"))()
 end
 end)
 end
