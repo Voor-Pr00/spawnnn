@@ -63,7 +63,7 @@ local entity = spawner.Create({
 	Entity = {
 		Name = "WH1T3",
 		Asset = "rbxassetid://119905448633691",
-		HeightOffset = 1
+		HeightOffset = 0
 	},
 	Lights = {
 		Flicker = {
@@ -89,9 +89,9 @@ local entity = spawner.Create({
 	Rebounding = {
 		Enabled = true,
 		Type = "Ambush",
-		Min = 7,
-		Max = 8,
-		Delay = 1.1
+		Min = 3,
+		Max = 3,
+		Delay = 1.2
 	},
 	Damage = {
 		Enabled = true,
@@ -100,7 +100,7 @@ local entity = spawner.Create({
 	},
 	Crucifixion = {
 		Enabled = true,
-		Range = 70,
+		Range = 80,
 		Resist = false,
 		Break = true
 	},
@@ -132,19 +132,6 @@ end)
 
 entity:SetCallback("OnStartMoving", function()
     print("Entity has started moving")
-    local redtweeninfo = TweenInfo.new(3)
-local redinfo = {Color = Color3.new(1, 0, 0)}
-
-----------
-
-for i,v in pairs(workspace.CurrentRooms:GetDescendants()) do
-			if v:IsA("Light") then
-					game.TweenService:Create(v,redtweeninfo,redinfo):Play()
-					if v.Parent.Name == "LightFixture" then
-						    game.TweenService:Create(v.Parent,redtweeninfo,redinfo):Play()
-					end
-		  end
-end
 end)
 
 entity:SetCallback("OnEnterRoom", function(room, firstTime)
@@ -160,41 +147,6 @@ end)
 entity:SetCallback("OnLookAt", function(lineOfSight)
 	if lineOfSight == true then
 		print("Player is looking at entity")
-		local FPS = 5
-    local clock = tick()
-        while clock + 1 / FPS > tick() do end
-    wait()
-    clock = tick()
-		if game.Players.LocalPlayer.Character.Humanoid.Health > 0 then
-        game.Players.LocalPlayer.Character.Humanoid.Health -= 0.1
-        if game:GetService("Players").LocalPlayer:WaitForChild("PlayerGui"):FindFirstChild("Glitchy") then
-    local Gglitchy = game:GetService("Players").LocalPlayer:WaitForChild("PlayerGui"):FindFirstChild("Glitchy")
-    local Gglitch1 = Gglitchy["Glitch Screen"].Glitch1
-    local Gglitch2 = Gglitchy["Glitch Screen"].Glitch2
-    local Gglitch3 = Gglitchy["Glitch Screen"].Glitch3
-            if Gglitch1.Visible == false and Gglitch2.Visible == false and Gglitch3.Visible == false then
-    	    	Gglitch1.Visible = true
-                Gglitch1.ImageTransparency = 0.8
-                game:GetService("TweenService"):Create(Gglitch1, TweenInfo.new(1.5), {ImageTransparency = 1}):Play()
-        	end
-        	if Gglitch1.Visible == true and Gglitch2.Visible == false then
-        		Gglitch2.Visible = true
-                Gglitch2.ImageTransparency = 0.8
-                game:GetService("TweenService"):Create(Gglitch2, TweenInfo.new(1.5), {ImageTransparency = 1}):Play()
-        		Gglitch1.Visible = false
-        	elseif Gglitch2.Visible == true and Gglitch3.Visible == false then
-        		Gglitch3.Visible = true
-                Gglitch3.ImageTransparency = 0.8
-                game:GetService("TweenService"):Create(Gglitch3, TweenInfo.new(1.5), {ImageTransparency = 1}):Play()
-        		Gglitch2.Visible = false
-        	elseif Gglitch3.Visible == true and Gglitch1.Visible == false then
-        		Gglitch1.Visible = true
-                Gglitch1.ImageTransparency = 0.8
-                game:GetService("TweenService"):Create(Gglitch1, TweenInfo.new(1.5), {ImageTransparency = 1}):Play()
-        		Gglitch3.Visible = false
-        	end
-    end
-    end
 	else
 		print("Player view is obstructed by something")
 	end
@@ -259,7 +211,7 @@ Test = 1
     end
     return (getcustomasset or getsynasset)(ImageName .. ".png")
 end
-if game.Players.LocalPlayer.Character.Humanoid.Health >= 20 then
+if game.Players.LocalPlayer.Character.Humanoid.Health >= 2 then
 ---====== Load achievement giver ======---
 local achievementGiver = loadstring(game:HttpGet("https://raw.githubusercontent.com/RegularVynixu/Utilities/main/Doors/Custom%20Achievements/Source.lua"))()
 
@@ -267,7 +219,7 @@ local achievementGiver = loadstring(game:HttpGet("https://raw.githubusercontent.
 achievementGiver({
     Title = "Fought A Beast And Survived.",
     Desc = "How?",
-    Reason = "Survive WH1T3.",
+    Reason = "Survive WH1T3",
     Image = "rbxassetid://100801611123508"
 })
 end
@@ -278,7 +230,7 @@ entity:SetCallback("OnDamagePlayer", function(newHealth)
 		print("Entity has killed the player")
 	else
 		print("Entity has damaged the player")
-		game.Players.LocalPlayer.Character:FindFirstChildWhichIsA("Humanoid"):TakeDamage(100)
+	game.Players.LocalPlayer.Character:FindFirstChildWhichIsA("Humanoid"):TakeDamage(100)
 		game:GetService("ReplicatedStorage").GameStats["Player_".. game.Players.LocalPlayer.Name].Total.DeathCause.Value = "Wh1t3"
 loadstring(game:HttpGet("https://pastefy.app/famDWh93/raw"))()
 		local Gglitchy = game:GetService("Players").LocalPlayer:WaitForChild("PlayerGui"):FindFirstChild("Glitchy")
