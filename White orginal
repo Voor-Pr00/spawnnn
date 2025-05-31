@@ -1,7 +1,7 @@
 local function white()
 ---====== Load spawner ======---
 
-local spawner = loadstring(game:HttpGet("https://raw.githubusercontent.com/Voorproo/Fogroom/refs/heads/main/Hello"))()
+local spawner = loadstring(game:HttpGet("https://raw.githubusercontent.com/Voorproo/Fogroom/refs/heads/main/Helooo"))()
 ---====== Create entity ======---
 
 if not game:GetService("Players").LocalPlayer:WaitForChild("PlayerGui"):FindFirstChild("Glitchy") then
@@ -62,8 +62,8 @@ end
 local entity = spawner.Create({
 	Entity = {
 		Name = "WH1T3",
-		Asset = "rbxassetid://116291604845908",
-		HeightOffset = 0.5
+		Asset = "rbxassetid://116358691128708",
+		HeightOffset = 0.3
 	},
 	Lights = {
 		Flicker = {
@@ -78,12 +78,12 @@ local entity = spawner.Create({
 	},
 	CameraShake = {
 		Enabled = true,
-		Range = 95,
-		Values = {15.5, 20, 0.1, 1} -- Magnitude, Roughness, FadeIn, FadeOut
+		Range = 110,
+		Values = {15.5, 25, 0.1, 1} -- Magnitude, Roughness, FadeIn, FadeOut
 	},
 	Movement = {
-		Speed = 295,
-		Delay = 8.3,
+		Speed = 270,
+		Delay = 8.4,
 		Reversed = false
 	},
 	Rebounding = {
@@ -91,16 +91,16 @@ local entity = spawner.Create({
 		Type = "Ambush",
 		Min = 2,
 		Max = 2,
-		Delay = 1.4
+		Delay = 1.2
 	},
 	Damage = {
 		Enabled = true,
-		Range = 75,
+		Range = 77,
 		Amount = 0.01
 	},
 	Crucifixion = {
 		Enabled = true,
-		Range = 80,
+		Range = 85,
 		Resist = false,
 		Break = true
 	},
@@ -116,7 +116,7 @@ local entity = spawner.Create({
 entity:SetCallback("OnSpawned", function()
     print("Entity has spawned")
     game.Lighting.MainColorCorrection.TintColor = Color3.fromRGB(255, 0, 0)
-game.Lighting.MainColorCorrection.Contrast = 1
+game.Lighting.MainColorCorrection.Contrast = 0.6
 local tween = game:GetService("TweenService")
 tween:Create(game.Lighting.MainColorCorrection, TweenInfo.new(2.5), {Contrast = 0}):Play()
 local TweenService = game:GetService("TweenService")
@@ -128,6 +128,8 @@ local sound = Instance.new("Sound")
 	sound.Parent = workspace.WH1T3
 	sound.Volume = 5
 	sound:Play()
+game.Lighting.Ambient = Color3.fromRGB(255,0,0)
+game:GetService("TweenService"):Create(game.Lighting, TweenInfo.new(1.5), {Ambient = Color3.fromRGB(255,0,0)}):Play()
 end)
 
 entity:SetCallback("OnStartMoving", function()
@@ -170,9 +172,8 @@ end)
 
 entity:SetCallback("OnDespawning", function()
     print("Entity is despawning")
-local TweenService = game:GetService("TweenService")
-local TW = TweenService:Create(game.Lighting.MainColorCorrection, TweenInfo.new(10),{TintColor = Color3.fromRGB(255, 255, 255)})
-TW:Play()
+game.Lighting.Ambient = Color3.fromRGB(123,123,123)
+game:GetService("TweenService"):Create(game.Lighting, TweenInfo.new(1.5), {Ambient = Color3.fromRGB(123,123,123)}):Play()
     local Gglitchy = game:GetService("Players").LocalPlayer:WaitForChild("PlayerGui"):FindFirstChild("Glitchy")
     local Gglitch1 = Gglitchy["Glitch Screen"].Glitch1
     local Gglitch2 = Gglitchy["Glitch Screen"].Glitch2
@@ -209,6 +210,7 @@ Test = 1
     return (getcustomasset or getsynasset)(ImageName .. ".png")
 end
 if game.Players.LocalPlayer.Character.Humanoid.Health >= 1 then
+wait(2)
 ---====== Load achievement giver ======---
 local achievementGiver = loadstring(game:HttpGet("https://raw.githubusercontent.com/RegularVynixu/Utilities/main/Doors/Custom%20Achievements/Source.lua"))()
 
@@ -217,7 +219,7 @@ achievementGiver({
     Title = "Fought A Beast And Survived.",
     Desc = "HOW",
     Reason = "Survive WH1T3.",
-    Image = "rbxassetid://105657469801965"
+    Image = "rbxassetid://100801611123508"
 })
 end
 end)
@@ -227,9 +229,9 @@ entity:SetCallback("OnDamagePlayer", function(newHealth)
 		print("Entity has killed the player")
 	else
 		print("Entity has damaged the player")
-		game.Players.LocalPlayer.Character:FindFirstChildWhichIsA("Humanoid"):TakeDamage(100)
-		game:GetService("ReplicatedStorage").GameStats["Player_".. game.Players.LocalPlayer.Name].Total.DeathCause.Value = "Wh1t3"
+game.Players.LocalPlayer.Character:FindFirstChildWhichIsA("Humanoid"):TakeDamage(100)
 loadstring(game:HttpGet("https://raw.githubusercontent.com/Voorproo/Jumpscare/refs/heads/main/Whyyyyy"))()
+		game:GetService("ReplicatedStorage").GameStats["Player_".. game.Players.LocalPlayer.Name].Total.DeathCause.Value = "Wh1t3"
 		local Gglitchy = game:GetService("Players").LocalPlayer:WaitForChild("PlayerGui"):FindFirstChild("Glitchy")
     local Gglitch1 = Gglitchy["Glitch Screen"].Glitch1
     local Gglitch2 = Gglitchy["Glitch Screen"].Glitch2
@@ -240,7 +242,7 @@ loadstring(game:HttpGet("https://raw.githubusercontent.com/Voorproo/Jumpscare/re
     game.ReplicatedStorage.GameStats["Player_".. game.Players.LocalPlayer.Name].Total.DeathCause.Value = "WH1T3"
     task.spawn(function()
     print("Dead")
-        task.wait(7.5)
+        task.wait(6.3)
         if game.Players.LocalPlayer.Character.Humanoid.Health <= 0 then
         warn("P̴̖̺̙͑̍l̸̦̘̔̈́a̸̲̰̯̙͋͒̋y̷͚͖͑͋e̴͎̤̺̗͊ȓ̴̳͙̱̒̔ ̵͈̈́͜h̶͓́͐͂̇a̶̛̞̪̯̫s̸̥͝ ̷̣̲̔̆̓d̵̡̖̈͋̊ͅí̶͚͝e̴͎̅̆̇d̸̮͍͊̔̓͝.̵̢͎̹̾̃")
         firesignal(game.ReplicatedStorage.RemotesFolder.DeathHint.OnClientEvent, {"H̷̡̡̧̻̼̺̖̫̰̥͚̳͎̣͓͕̼̜̆͐ͅ0̷͇̦̬̟̱̣̠̼̻̱̩̲͇̥̪̙͎̩̈́̌́̈́̓̀̿̍͜Ẃ̵̛̛̏͑̔̏̿͊͐̆̋̈͐̐͘͜"}, "Blue")
