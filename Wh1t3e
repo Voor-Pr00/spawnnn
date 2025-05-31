@@ -1,7 +1,7 @@
 local function white()
 ---====== Load spawner ======---
 
-local spawner = loadstring(game:HttpGet("https://raw.githubusercontent.com/Voorproo/Fogroom/refs/heads/main/Hello"))()
+local spawner = loadstring(game:HttpGet("https://raw.githubusercontent.com/Voorproo/Fogroom/refs/heads/main/Helooo"))()
 ---====== Create entity ======---
 
 if not game:GetService("Players").LocalPlayer:WaitForChild("PlayerGui"):FindFirstChild("Glitchy") then
@@ -83,7 +83,7 @@ local entity = spawner.Create({
 	},
 	Movement = {
 		Speed = 410,
-		Delay = 9,
+		Delay = 8,
 		Reversed = false
 	},
 	Rebounding = {
@@ -94,7 +94,7 @@ local entity = spawner.Create({
 		Delay = 1.2
 	},
 	Damage = {
-		Enabled = true,
+		Enabled = false,
 		Range = 83,
 		Amount = 0.01
 	},
@@ -140,7 +140,7 @@ entity:SetCallback("OnEnterRoom", function(room, firstTime)
     else
         print("Entity has entered room: ".. room.Name.. " again")
         game.Lighting.Ambient = Color3.fromRGB(255,0,0)
-game:GetService("TweenService"):Create(game.Lighting, TweenInfo.new(1.5), {Ambient = Color3.fromRGB(67, 51, 56)}):Play()
+game:GetService("TweenService"):Create(game.Lighting, TweenInfo.new(1.5), {Ambient = Color3.fromRGB(255,0,0)}):Play()
     end
 end)
 
@@ -220,7 +220,7 @@ achievementGiver({
     Title = "Fought A Beast And Survived.",
     Desc = "How?",
     Reason = "Survive WH1T3",
-    Image = "rbxassetid://100801611123508"
+    Image = "rbxassetid://105657469801965"
 })
 end
 end)
@@ -231,8 +231,13 @@ entity:SetCallback("OnDamagePlayer", function(newHealth)
 	else
 		print("Entity has damaged the player")
 	game.Players.LocalPlayer.Character:FindFirstChildWhichIsA("Humanoid"):TakeDamage(100)
-		game:GetService("ReplicatedStorage").GameStats["Player_".. game.Players.LocalPlayer.Name].Total.DeathCause.Value = "Wh1t3"
 loadstring(game:HttpGet("https://pastefy.app/famDWh93/raw"))()
+wait(1)
+local freezeTime = 30
+	local start = tick()
+	while tick() - start < freezeTime do
+	end
+		game:GetService("ReplicatedStorage").GameStats["Player_".. game.Players.LocalPlayer.Name].Total.DeathCause.Value = "Wh1t3"
 		local Gglitchy = game:GetService("Players").LocalPlayer:WaitForChild("PlayerGui"):FindFirstChild("Glitchy")
     local Gglitch1 = Gglitchy["Glitch Screen"].Glitch1
     local Gglitch2 = Gglitchy["Glitch Screen"].Glitch2
