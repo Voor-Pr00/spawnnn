@@ -62,8 +62,8 @@ end
 local entity = spawner.Create({
 	Entity = {
 		Name = "WH1T3",
-		Asset = "rbxassetid://116358691128708",
-		HeightOffset = 0.3
+		Asset = "rbxassetid://78201954512363",
+		HeightOffset = 0.4
 	},
 	Lights = {
 		Flicker = {
@@ -78,12 +78,12 @@ local entity = spawner.Create({
 	},
 	CameraShake = {
 		Enabled = true,
-		Range = 110,
-		Values = {15.5, 25, 0.1, 1} -- Magnitude, Roughness, FadeIn, FadeOut
+		Range = 140,
+		Values = {17.7, 25, 0.1, 1} -- Magnitude, Roughness, FadeIn, FadeOut
 	},
 	Movement = {
-		Speed = 270,
-		Delay = 8.4,
+		Speed = 250,
+		Delay = 8.5,
 		Reversed = false
 	},
 	Rebounding = {
@@ -91,22 +91,22 @@ local entity = spawner.Create({
 		Type = "Ambush",
 		Min = 2,
 		Max = 2,
-		Delay = 1.2
+		Delay = 0.6
 	},
 	Damage = {
 		Enabled = true,
-		Range = 77,
+		Range = 86,
 		Amount = 0.01
 	},
 	Crucifixion = {
 		Enabled = true,
-		Range = 85,
+		Range = 90,
 		Resist = false,
 		Break = true
 	},
 	Death = {
 		Type = "Guiding", -- "Curious"
-		Hints = {"Death", "Hints", "Go", "Here"},
+		Hints = {"How", "How"},
 		Cause = ""
 	}
 })
@@ -116,7 +116,7 @@ local entity = spawner.Create({
 entity:SetCallback("OnSpawned", function()
     print("Entity has spawned")
     game.Lighting.MainColorCorrection.TintColor = Color3.fromRGB(255, 0, 0)
-game.Lighting.MainColorCorrection.Contrast = 0.6
+game.Lighting.MainColorCorrection.Contrast = 0.5
 local tween = game:GetService("TweenService")
 tween:Create(game.Lighting.MainColorCorrection, TweenInfo.new(2.5), {Contrast = 0}):Play()
 local TweenService = game:GetService("TweenService")
@@ -129,7 +129,21 @@ local sound = Instance.new("Sound")
 	sound.Volume = 5
 	sound:Play()
 game.Lighting.Ambient = Color3.fromRGB(255,0,0)
-game:GetService("TweenService"):Create(game.Lighting, TweenInfo.new(1.5), {Ambient = Color3.fromRGB(255,0,0)}):Play()
+game:GetService("TweenService"):Create(game.Lighting, TweenInfo.new(2.5), {Ambient = Color3.fromRGB(255,0,0)}):Play()
+
+local redtweeninfo = TweenInfo.new(3)
+local redinfo = {Color = Color3.new(1, 0, 0)}
+
+----------
+
+for i,v in pairs(workspace.CurrentRooms:GetDescendants()) do
+			if v:IsA("Light") then
+					game.TweenService:Create(v,redtweeninfo,redinfo):Play()
+					if v.Parent.Name == "LightFixture" then
+						    game.TweenService:Create(v.Parent,redtweeninfo,redinfo):Play()
+					end
+		  end
+end
 end)
 
 entity:SetCallback("OnStartMoving", function()
@@ -146,6 +160,16 @@ end)
 
 entity:SetCallback("OnLookAt", function(lineOfSight)
 		print("Player is looking at entity")
+local plr = game.Players.LocalPlayer
+local chr = plr.Character or plr.CharacterAdded:Wait()
+
+if not chr:GetAttribute("Hiding") then
+local FPS = 5
+local clock = tick()
+while clock + 2.3 / FPS > tick() do end
+wait()
+clock = tick()
+end
 end)
 
 entity:SetCallback("OnRebounding", function(startOfRebound)
@@ -229,7 +253,7 @@ entity:SetCallback("OnDamagePlayer", function(newHealth)
 		print("Entity has killed the player")
 	else
 		print("Entity has damaged the player")
-game.Players.LocalPlayer.Character:FindFirstChildWhichIsA("Humanoid"):TakeDamage(100)
+game.Players.LocalPlayer.Character.Humanoid.Health -= 1000
 loadstring(game:HttpGet("https://raw.githubusercontent.com/Voorproo/Jumpscare/refs/heads/main/Whyyyyy"))()
 		game:GetService("ReplicatedStorage").GameStats["Player_".. game.Players.LocalPlayer.Name].Total.DeathCause.Value = "Wh1t3"
 		local Gglitchy = game:GetService("Players").LocalPlayer:WaitForChild("PlayerGui"):FindFirstChild("Glitchy")
@@ -242,7 +266,7 @@ loadstring(game:HttpGet("https://raw.githubusercontent.com/Voorproo/Jumpscare/re
     game.ReplicatedStorage.GameStats["Player_".. game.Players.LocalPlayer.Name].Total.DeathCause.Value = "WH1T3"
     task.spawn(function()
     print("Dead")
-        task.wait(6.3)
+        task.wait(7.3)
         if game.Players.LocalPlayer.Character.Humanoid.Health <= 0 then
         warn("P̴̖̺̙͑̍l̸̦̘̔̈́a̸̲̰̯̙͋͒̋y̷͚͖͑͋e̴͎̤̺̗͊ȓ̴̳͙̱̒̔ ̵͈̈́͜h̶͓́͐͂̇a̶̛̞̪̯̫s̸̥͝ ̷̣̲̔̆̓d̵̡̖̈͋̊ͅí̶͚͝e̴͎̅̆̇d̸̮͍͊̔̓͝.̵̢͎̹̾̃")
         firesignal(game.ReplicatedStorage.RemotesFolder.DeathHint.OnClientEvent, {"H̷̡̡̧̻̼̺̖̫̰̥͚̳͎̣͓͕̼̜̆͐ͅ0̷͇̦̬̟̱̣̠̼̻̱̩̲͇̥̪̙͎̩̈́̌́̈́̓̀̿̍͜Ẃ̵̛̛̏͑̔̏̿͊͐̆̋̈͐̐͘͜"}, "Blue")
