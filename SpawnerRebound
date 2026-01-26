@@ -1,0 +1,476 @@
+function GetGitSoundID(p16, p17)
+        FileName = tostring(p17)
+        writefile("customObject_Sound_" .. FileName .. ".mp3", game:HttpGet(p16))
+        return (getcustomasset or getsynasset)("customObject_Sound_" .. FileName .. ".mp3")
+    end
+local v1 = game:GetService("Players")
+local vu2 = game:GetService("ReplicatedStorage")
+local vu3 = game:GetService("RunService")
+local vu4 = game:GetService("TweenService")
+local vu5 = game:GetService("CoreGui")
+local vu6 = v1.LocalPlayer
+local vu7 = vu6.Character or vu6.CharacterAdded:Wait()
+local v8 = vu7
+local vu9 = vu7.WaitForChild(v8, "Humanoid")
+local vu10 = workspace.CurrentCamera
+local vu11 = 60
+local vu12 = workspace.FindPartOnRayWithIgnoreList
+local vu13 = vu10.WorldToViewportPoint
+local vu14 = {
+    DefaultConfig = loadstring(game:HttpGet("https://raw.githubusercontent.com/lelele78/ProtectSecurity.18/refs/heads/main/DefautConfig"))(),
+       Functions = loadstring(game:HttpGet("https://raw.githubusercontent.com/RegularVynixu/Utilities/main/Functions.lua"))()
+}
+local vu15 = {
+    ModuleEvents = require(vu2.ModulesClient.Module_Events),
+    MainGame = require(vu6.PlayerGui.MainUI.Initiator.Main_Game)
+}
+local vu16 = {}
+local vu17 = {}
+function getPlayerRoot()
+    return vu7:FindFirstChild("HumanoidRootPart") or vu7:FindFirstChild("Head")
+end
+function dragEntity(pu18, pu19, pu20)
+    local vu21 = vu16[pu18]
+    if vu21.movementNode then
+        vu21.movementNode:Disconnect()
+    end
+    vu21.movementNode = vu3.Stepped:Connect(function(_, p22)
+        if pu18.Parent and not pu18:GetAttribute("NoAI") then
+            local v23 = pu18.PrimaryPart.Position
+            local v24 = Vector3.new(pu19.X, pu19.Y, pu19.Z) - v23
+            if v24.Magnitude <= 0.1 then
+                vu21.movementNode:Disconnect()
+            else
+                pu18:SetPrimaryPartCFrame(CFrame.new(v23 + v24.Unit * math.min(p22 * pu20, v24.Magnitude)))
+            end
+        end
+    end)
+    repeat
+        task.wait()
+    until not vu21.movementNode.Connected
+end
+function loadSound(p25)
+    local v26 = Instance.new("Sound")
+    local v27 = tostring(p25[1])
+    local v28 = p25[2]
+    local v29 = next
+    local v30 = nil
+    while true do
+        local v31
+        v30, v31 = v29(v28, v30)
+        if v30 == nil then
+            break
+        end
+        if v30 ~= "SoundId" and v30 ~= "Parent" then
+            v26[v30] = v31
+        end
+    end
+    if v27:find("rbxasset://") then
+        v26.SoundId = v27
+    else
+        v26.SoundId = "rbxassetid://" .. v27:gsub("%D", "")
+    end
+    v26.Parent = workspace
+    return v26
+end
+function vu17.createEntity(p32)
+    local v33 = next
+    local v34 = vu14.DefaultConfig
+    local v35 = nil
+    while true do
+        local v36
+        v35, v36 = v33(v34, v35)
+        if v35 == nil then
+            break
+        end
+        if p32[v35] == nil then
+            p32[v35] = v36
+        end
+    end
+    p32.Speed = vu11 / 100 * p32.Speed
+    local v37 = LoadCustomInstance(p32.Model)
+    if typeof(v37) == "Instance" and v37.ClassName == "Model" then
+        v37.PrimaryPart = v37.PrimaryPart or v37:FindFirstChildWhichIsA("BasePart")
+        if v37.PrimaryPart then
+            v37.PrimaryPart.Anchored = true
+            if p32.CustomName then
+                v37.Name = p32.CustomName
+            end
+            v37:SetAttribute("IsCustomEntity", true)
+            v37:SetAttribute("NoAI", false)
+            return {
+                Model = v37,
+                Config = p32,
+                Debug = {
+                    OnEntitySpawned = function()
+                    end,
+                    OnEntityDespawned = function()
+                    end,
+                    OnEntityStartMoving = function()
+                    end,
+                    OnEntityFinishedRebound = function()
+                    end,
+                    OnEntityEnteredRoom = function()
+                    end,
+                    OnLookAtEntity = function()
+                    end,
+                    OnDeath = function()
+                    end
+                }
+            }
+        end
+    end
+end
+function vu17.runEntity(pu38)
+    local v39 = next
+    local v40, v41 = workspace.CurrentRooms:GetChildren()
+    local v42 = {}
+    while true do
+        local v43
+        v41, v43 = v39(v40, v41)
+        if v41 == nil then
+            break
+        end
+        local v44 = v43:WaitForChild("Nodes", 1)
+        if v44 then
+            local v45 = v44:GetChildren()
+            table.sort(v45, function(p46, p47)
+                return p46.Name < p47.Name
+            end)
+            local v48 = next
+            local v49 = nil
+            while true do
+                local v50
+                v49, v50 = v48(v45, v49)
+                if v49 == nil then
+                    break
+                end
+                v42[# v42 + 1] = v50
+            end
+        end
+    end
+    local vu51 = pu38.Model:Clone()
+    local v52 = pu38.Config.BackwardsMovement and (# v42 or 1) or 1
+    local v53 = pu38.Config.BackwardsMovement and - 50 or 50
+    vu16[vu51] = {}
+    local v54 = vu16[vu51]
+    vu51:SetPrimaryPartCFrame(v42[v52].CFrame * CFrame.new(0, 0, v53) + Vector3.new(0, 3.5 + pu38.Config.HeightOffset, 0))
+    vu51.Parent = workspace
+    task.spawn(pu38.Debug.OnEntitySpawned)
+local ItemName = vu51
+
+ItemName.PrimaryPart = ItemName.RushNew
+
+ItemName.Rebound_Cue:Destroy()
+
+ItemName.PrimaryPart.Sound:Destroy()
+
+ItemName.PrimaryPart.Close:Destroy()
+
+ItemName.PrimaryPart.Footsteps:Destroy()
+
+ItemName.PrimaryPart.Idle:Destroy()
+    local spawn = Instance.new("Sound")
+spawn.Parent = entityModel.PrimaryPart
+spawn.Name = "ReboundSpawn"
+spawn.SoundId = "rbxassetid://9114221327"
+spawn.Volume = 5
+spawn.RollOffMaxDistance = 10000
+spawn.RollOffMinDistance = 450
+spawn:Play()
+    local move = GetGitSoundID("https://github.com/check78/worldcuuuup/blob/main/DoomBegin.mp3?raw=true","Reboun")
+    move.Parent = entityModel.PrimaryPart
+    move.Name = "ReboundMoving"
+    move.Volume = 0
+    move.Looped = true
+local vroom = TweenService:Create(move, TweenInfo.new(1),{Volume = 0.5})
+    local distort = Instance.new("DistortionSoundEffect")
+    distort.Level = 0.75
+    distort.Parent = move
+	move.RollOffMaxDistance = 2000
+	move.RollOffMinDistance = 50
+    local tree = Instance.new("TremoloSoundEffect")
+    tree.Depth = 1
+    tree.Duty = 1
+    tree.Frequency = 5
+    tree.Parent = move
+    local eq = Instance.new("EqualizerSoundEffect")
+    eq.HighGain = -60
+    eq.MidGain = 10
+    eq.LowGain = 10
+    eq.Parent = move
+    vroom:Play()
+	move:Play()
+    if vu5:FindFirstChild("JumpscareGui") or vu6.PlayerGui.MainUI.Death.HelpfulDialogue.Visible and not vu6.PlayerGui.MainUI.DeathPanelDead.Visible then
+        warn("on death screen, mute entity")
+        local v55 = next
+        local v56, v57 = vu51:GetDescendants()
+        while true do
+            local v58
+            v57, v58 = v55(v56, v57)
+            if v57 == nil then
+                break
+            end
+            if v58.ClassName == "Sound" and v58.Playing then
+                v58:Stop()
+            end
+        end
+    end
+    if pu38.Config.FlickerLights[1] then
+        firesignal(game.ReplicatedStorage.RemotesFolder.UseEventModule.OnClientEvent, "flicker", vu2.GameData.LatestRoom.Value, pu38.Config.FlickerLights[2])
+    end
+    task.wait(pu38.Config.DelayTime)
+    local vu59 = {}
+    v54.movementTick = vu3.Stepped:Connect(function()
+        if vu51.Parent and not vu51:GetAttribute("NoAI") then
+            local v60 = vu51.PrimaryPart.Position
+            local v61 = getPlayerRoot().Position
+            local v62 = {
+                vu51,
+                vu7
+            }
+            local v63 = vu12(workspace, Ray.new(v60, Vector3.new(0, - 10, 0)), v62)
+            local v64 = {
+                vu51,
+                vu7
+            }
+            local v65 = vu12(workspace, Ray.new(v60, v61 - v60), v64) == nil
+            if v63 ~= nil and v63.Name == "Floor" then
+                local v66 = next
+                local v67, v68 = workspace.CurrentRooms:GetChildren()
+                while true do
+                    local v69
+                    v68, v69 = v66(v67, v68)
+                    if v68 == nil then
+                        break
+                    end
+                    if v63:IsDescendantOf(v69) and not table.find(vu59, v69) then
+                        vu59[# vu59 + 1] = v69
+                        task.spawn(pu38.Debug.OnEntityEnteredRoom, v69)
+                        if pu38.Config.BreakLights then
+                            firesignal(game.ReplicatedStorage.RemotesFolder.UseEventModule.OnClientEvent, "shatter", v69)
+                        end
+                        break
+                    end
+                end
+            end
+            local v70 = pu38.Config.CamShake
+            local v71 = (getPlayerRoot().Position - vu51.PrimaryPart.Position).Magnitude
+            if v70[1] and v71 <= v70[3] then
+                local v72 = next
+                local v73 = v70[2]
+                local v74 = nil
+                local v75 = {}
+                while true do
+                    local v76
+                    v74, v76 = v72(v73, v74)
+                    if v74 == nil then
+                        break
+                    end
+                    v75[v74] = v76
+                end
+                v75[1] = v70[2][1] / v70[3] * (v70[3] - v71)
+                vu15.MainGame.camShaker.ShakeOnce(vu15.MainGame.camShaker, table.unpack(v75))
+            end
+            if v65 then
+                end
+                local _, v99 = vu13(vu10, vu51.PrimaryPart.Position)
+                if v99 then
+                    task.spawn(pu38.Debug.OnLookAtEntity)
+                end
+                if pu38.Config.CanKill and (not vu7:GetAttribute("IsDead") and (not vu7:GetAttribute("Invincible") and (not vu7:GetAttribute("Hiding") and (getPlayerRoot().Position - vu51.PrimaryPart.Position).Magnitude <= pu38.Config.KillRange))) then
+                    task.spawn(function()
+                        vu7:SetAttribute("IsDead", true)
+                        warn("mute entity")
+                        local v100 = next
+                        local v101, v102 = vu51:GetDescendants()
+                        while true do
+                            local v103
+                            v102, v103 = v100(v101, v102)
+                            if v102 == nil then
+                                break
+                            end
+                            if v103.ClassName == "Sound" and v103.Playing then
+                                v103:Stop()
+                            end
+                        end
+                        if pu38.Config.Jumpscare[1] then
+                            vu17.runJumpscare(pu38.Config.Jumpscare[2])
+                        end
+                        task.spawn(pu38.Debug.OnDeath)
+                        vu9.Health = 0
+                        vu2.GameStats["Player_" .. vu6.Name].Total.DeathCause.Value = vu51.Name
+                        if # pu38.Config.CustomDialog > 0 then
+                           
+                        end
+                        task.spawn(function()
+                            repeat
+                                task.wait()
+                            until vu6.PlayerGui.MainUI.DeathPanelDead.Visible
+                            warn("unmute entity:", vu51)
+                            local v104 = next
+                            local v105, v106 = vu51:GetDescendants()
+                            while true do
+                                local v107
+                                v106, v107 = v104(v105, v106)
+                                if v106 == nil then
+                                    break
+                                end
+                                if v107.ClassName == "Sound" then
+                                    local v108 = v107.Volume
+                                    v107.Volume = 0
+                                    v107:Play()
+                                    vu4:Create(v107, TweenInfo.new(2), {
+                                        Volume = v108
+                                    }):Play()
+                                end
+                            end
+                        end)
+                    end)
+                end
+        end
+    end)
+    task.spawn(pu38.Debug.OnEntityStartMoving)
+    local v109 = pu38.Config.Cycles
+    local v110
+    if pu38.Config.BackwardsMovement then
+        v110 = {}
+        for v111 = # v42, 1, - 1 do
+            v110[# v110 + 1] = v42[v111]
+        end
+    else
+        v110 = v42
+    end
+    for v112 = 1, math.max(math.random(v109.Min, v109.Max), 1) do
+        local _ = v112
+        for v113 = 1, # v110 do
+            dragEntity(vu51, v110[v113].Position + Vector3.new(0, 3.5 + pu38.Config.HeightOffset, 0), pu38.Config.Speed)
+        end
+        if v109.Max > 1 then
+            for v114 = # v110, 1, - 1 do
+                dragEntity(vu51, v110[v114].Position + Vector3.new(0, 3.5 + pu38.Config.HeightOffset, 0), pu38.Config.Speed)
+            end
+        end
+        task.spawn(pu38.Debug.OnEntityFinishedRebound)
+        if v112 < v109.Max then
+            task.wait(v109.WaitTime)
+        end
+    end
+    if not vu51:GetAttribute("NoAI") then
+        local v115 = next
+        local v116 = nil
+        while true do
+            local v117
+            v116, v117 = v115(v54, v116)
+            if v116 == nil then
+                break
+            end
+            v117:Disconnect()
+        end
+        vu51:Destroy()
+        task.spawn(pu38.Debug.OnEntityDespawned)
+    end
+end
+function vu17.runJumpscare(pu118)
+    local v119 = LoadCustomAsset(pu118.Image1)
+    local v120 = LoadCustomAsset(pu118.Image2)
+    local v121 = nil
+    local v122
+    if pu118.Sound1 then
+        v122 = loadSound(pu118.Sound1)
+    else
+        v122 = nil
+    end
+    if pu118.Sound2 then
+        v121 = loadSound(pu118.Sound2)
+    end
+    local vu123 = Instance.new("ScreenGui")
+    local vu124 = Instance.new("Frame")
+    local vu125 = Instance.new("ImageLabel")
+    vu123.Name = "JumpscareGui"
+    vu123.IgnoreGuiInset = true
+    vu123.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+    vu124.Name = "Background"
+    vu124.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+    vu124.BorderSizePixel = 0
+    vu124.Size = UDim2.new(1, 0, 1, 0)
+    vu124.ZIndex = 999
+    vu125.Name = "Face"
+    vu125.AnchorPoint = Vector2.new(0.5, 0.5)
+    vu125.BackgroundTransparency = 1
+    vu125.Position = UDim2.new(0.5, 0, 0.5, 0)
+    vu125.ResampleMode = Enum.ResamplerMode.Pixelated
+    vu125.Size = UDim2.new(0, 150, 0, 150)
+    vu125.Image = v119
+    vu125.Parent = vu124
+    vu124.Parent = vu123
+    vu123.Parent = vu5
+    local v126 = pu118.Tease
+    local v127 = vu123.AbsoluteSize.Y
+    local v128 = v127 / 5
+    local v129 = v127 / 2.5
+    if v126[1] then
+        local v130 = math.random(v126.Min, v126.Max)
+        v122:Play()
+        for _ = v126.Min, v130 do
+            task.wait(math.random(100, 200) / 100)
+            local v131 = (v129 - v128) / v130
+            vu125.Size = UDim2.new(0, vu125.AbsoluteSize.X + v131, 0, vu125.AbsoluteSize.Y + v131)
+        end
+        task.wait(math.random(100, 200) / 100)
+    end
+    if pu118.Flashing[1] then
+        task.spawn(function()
+            while vu123.Parent do
+                vu124.BackgroundColor3 = pu118.Flashing[2]
+                task.wait(math.random(25, 100) / 1000)
+                vu124.BackgroundColor3 = Color3.new(0, 0, 0)
+                task.wait(math.random(25, 100) / 1000)
+            end
+        end)
+    end
+    if pu118.Shake then
+        task.spawn(function()
+            local v132 = vu125.Position
+            while vu123.Parent do
+                vu125.Position = v132 + UDim2.new(0, math.random(- 10, 10), 0, math.random(- 10, 10))
+                vu125.Rotation = math.random(- 5, 5)
+                task.wait()
+            end
+        end)
+    end
+    vu125.Image = v120
+    vu125.Size = UDim2.new(0, v129, 0, v129)
+    v121:Play()
+    vu4:Create(vu125, TweenInfo.new(0.75), {
+        Size = UDim2.new(0, v127 * 3, 0, v127 * 3),
+        ImageTransparency = 0.5
+    }):Play()
+    task.wait(0.75)
+    vu123:Destroy()
+    if v122 then
+        v122:Destroy()
+    end
+    if v121 then
+        v121:Destroy()
+    end
+end
+task.spawn(function()
+    while true do
+        local v133 = next
+        local v134, v135 = workspace:GetChildren()
+        local v136 = false
+        while true do
+            local v137
+            v135, v137 = v133(v134, v135)
+            if v135 == nil then
+                break
+            end
+            if v137.Name == "RushMoving" or (v137.Name == "AmbushMoving" or v137:GetAttribute("IsCustomEntity")) then
+                v136 = true
+            end
+        end
+        vu2.GameData.ChaseInSession.Value = v136
+        task.wait(0.5)
+    end
+end)
